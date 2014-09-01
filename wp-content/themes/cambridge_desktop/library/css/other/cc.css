@@ -1,0 +1,41 @@
+/*product page*/
+.products-collection {
+  position: relative;
+  margin-bottom: 20px;
+  width: 300px;
+  height: 300px;
+}
+.products-name {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  height: 300px;
+  width: 300px;
+  text-align: center;
+  display: none;
+  /* comment this out for CSS hover */
+  background-color: #fff;
+  opacity: 0.6;
+}
+.products-name .text {
+  position: absolute;
+  color: #000;
+  top: 47%;
+  width: 100%;
+  text-align: center;
+}
+/*sticky footer*/
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -106px;
+}
+#footer {
+  margin-top: 106px;
+}
+#push,
+#footer {
+  height: 106px;
+}
