@@ -2468,6 +2468,17 @@ body {
 .borderline {
   border: 2px solid #5b564d;
 }
+/*single products*/
+#single-content {
+  background: #fff;
+}
+.single-title-border {
+  border: 1px solid #000;
+}
+/*menu sidebar*/
+.sidebar-wrapper {
+  background: #000;
+}
 /*sticky footer setting*/
 html,
 body {

@@ -1,20 +1,21 @@
-<div class="container">
+<div class="container sidebar-wrapper">
 	<div class="col-md-12">
 		<div id="collections-menu">
-		<?php
-			$collections = get_terms(
-				'collections', array(
-				'hide_empty' => 0
-			) );
-			foreach ($collections as $collection) {
-		?>
-			<ul>
-				<li>
-					<a href="/<?php echo $collection->slug;?>"><?php echo $collection->name;?></a>
-				</li>
-			</ul>
+			<ul class="list-inline">
+				Collections
+				<?php
+					$collections = get_terms(
+						'collections', array(
+						'hide_empty' => 0
+					) );
+					foreach ($collections as $collection) {
+				?>
+					<li>
+						<a href="/<?php echo $collection->slug;?>"><?php echo $collection->name;?></a>
+					</li>
 
-		<?php }?>
+				<?php }?>
+			</ul>
 
 		</div>
 	</div>
