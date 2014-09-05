@@ -9,7 +9,7 @@ $image_sizes['thumb-slider'] = array(
 );
 
 $image_sizes['product-images'] = array(
-	'width' => 420,
+	'width' => 506,
 	'height' => 99999,
 	'crop' => false
 );

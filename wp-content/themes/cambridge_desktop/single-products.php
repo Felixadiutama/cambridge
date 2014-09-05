@@ -70,7 +70,7 @@
 								<?php } ?>
 
 								<?php if ($image5 != ''){
-									$product_path1 = cc_image_resize(array(
+									$product_path5 = cc_image_resize(array(
 										'image_to_resize' => $image5,
 										'image_size' => 'product-images'
 									));
