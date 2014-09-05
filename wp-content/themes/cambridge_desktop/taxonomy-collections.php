@@ -1,10 +1,29 @@
 <?php get_header(); ?>
 <?php get_sidebar('collections'); ?>
     <div class="container">
-
+				<div class="row taxo-header">
+					<?php
+						$images = apply_filters( 'taxonomy-images-queried-term-image-url', '', array(
+						    'image_size' => 'full'
+						    ) );
+					?>
+						<div class="col-md-7" style="background: url('<?php echo $images; ?>') no-repeat; min-height:450px;"></div>
+						<div class="col-md-5">
+							<h1 class="archive-title raleway"><?php echo single_cat_title( '', false ); ?></h1>
+							<div class="raleway">
+								<?php
+									// Show an optional term description.
+									$term_description = term_description();
+									if ( ! empty( $term_description ) ) :
+										printf( '<div class="taxonomy-description">%s</div>', $term_description );
+									endif;
+								?>
+							</div>
+						</div>
+				</div><!-- .taxo-header -->
 			<div id="content" class="clearfix row">
 
-				<div id="main" class="col-md-12 clearfix" role="main">
+				<div id="main-taxonomy" class="col-md-12 clearfix" role="main">
 
 							<?php
 								$k = 1;
@@ -26,7 +45,7 @@
 												<?php if ( has_post_thumbnail() ){ ?>
 													<?php the_post_thumbnail('medium'); ?>
 												<?php }else{ ?>
-													<img src="/wp-content/themes/cambridge_desktop/library/images/300x300.gif" alt="">
+													<img src="/wp-content/themes/cambridge_desktop/library/images/300x300.gif" alt="products" class="img-responsive">
 												<?php } ?>
 											</div>
 

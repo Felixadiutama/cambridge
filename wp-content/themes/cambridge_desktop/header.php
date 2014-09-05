@@ -12,6 +12,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 		<title><?php if (is_front_page()) { bloginfo('name'); } else { wp_title(''); } ?></title>
+		<meta name="description" content="Cambridge Casual offers affordable designer luxury Teak lifestyle outdoor furniture. Weave Teak, rustic finish, weathered look unique traditional comfortable setting for patio and garden. All furniture are made in ISO certified factory. We also provide direct shipment and drop ship.">
 
 		<?php // mobile meta (hooray!) ?>
 		<meta name="HandheldFriendly" content="True">
@@ -55,11 +56,11 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="homepage"><?php bloginfo('name'); ?></a>
+              <a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="homepage"><img src="/wp-content/themes/cambridge_desktop/library/images/cc-logo.png" class="navbar-logo"></a>
 
             </div>
 
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <div class="navbar-collapse collapse navbar-responsive-collapse raleway">
               <?php bones_main_nav(); ?>
 
             </div>

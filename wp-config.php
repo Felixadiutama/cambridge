@@ -84,6 +84,10 @@ define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 
+// folder contains the resized images from knt_image_resize() in /library/knt.php
+define('IMAGE_CACHE_FOLDER', '/imagecache/');
+
+
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');

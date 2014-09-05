@@ -27,22 +27,33 @@ Template Name: Page Template
 
 								<div class="row">
 									<div class="col-md-12">
-										<div class="page-content-title">
+										<div class="page-content-title raleway">
 											<?php the_title();?>
 										</div>
 									</div>
 								</div>
 
 								<div class="row template-content">
-									<div class="col-md-4">
-										<div class="page-content-header">
-											<?php echo types_render_field( "header-content", array( ) )?>
+								<div class="col-md-1"></div>
+									<div class="col-md-3">
+										<div class="page-content-header raleway">
+											<h1>
+												<?php echo types_render_field( "header-content", array( ) )?>
+											</h1>
 										</div>
 									</div>
 									<div class="col-md-8">
-										<div class="page-content">
+<!-- 										<div class="page-content raleway">
+											<?php the_content();?>
+										</div> -->
+
+										<div class="page-content baskerville">
 											<?php the_content();?>
 										</div>
+<!--
+										<div class="page-content crimson">
+											<?php the_content();?>
+										</div> -->
 									</div>
 								</div>
 
