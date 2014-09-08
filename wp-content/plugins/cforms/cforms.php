@@ -110,7 +110,7 @@ function start_cforms_session() {
 function start_cforms_session() {
 	@session_cache_limiter('private, must-revalidate');
 	@session_cache_expire(0);
-	if ( !session_id() ){		
+	if ( !session_id() ){
 		@session_start();
 		### debug
 		db( "After session (".session_id().")start: ".print_r($_SESSION,1) );
@@ -188,7 +188,7 @@ function cforms($args = '',$no = '') {
         $_SESSION['cforms']['first']=$no;
         $_SESSION['cforms']['pos']=1;
     }
-	
+
 
 	##debug
 	db( print_r($_SESSION,1) );
@@ -256,7 +256,7 @@ function cforms($args = '',$no = '') {
 			$usermessage_text = preg_replace ( '|\r\n|', '<br />', stripslashes($cformsSettings['global']['cforms_commentsuccess']) );
 		} else {
 			$usermessage_class = ' failure';
-			$success=false;		
+			$success=false;
 		}
 	}
 
@@ -390,7 +390,7 @@ function cforms($args = '',$no = '') {
 	$ol = false;
 
 	$inpFieldArr = array(); // for var[] type input fields
-		
+
 	for($i = 1; $i <= $field_count; $i++) {
 
 		if ( !$custom )
@@ -410,22 +410,22 @@ function cforms($args = '',$no = '') {
 		### ommit certain fields
 		if( in_array($field_type,array('cauthor','url','email')) && $user->ID )
 			continue;
-			
- 
+
+
 		### check for html5 attributes
 	    $obj = explode('|html5:', $field_name,2);
 		$html5 = ($obj[1]<>'') ? preg_split('/\x{00A4}/u',$obj[1], -1) : '';
 
 		###debug
 		db("\t\t html5 check, settings = ".print_r($html5,1));
-		
+
 		### check for custom err message and split field_name
 	    $obj = explode('|err:', $obj[0],2);
 	    $fielderr = $obj[1];
-		
+
 		###debug
 		db("\t adding $field_type field: $field_name");
-		
+
 		if ( $fielderr <> '')	{
 		    switch ( $field_type ) {
 			    case 'upload':
@@ -465,7 +465,7 @@ function cforms($args = '',$no = '') {
 
 		###debug
 		db("\t\t title check, obj[0] = ".$obj[0]);
-		
+
 
 		### special treatment for selectboxes
 		if (  in_array($field_type,array('multiselectbox','selectbox','radiobuttons','send2author','luv','subscribe','checkbox','checkboxgroup','ccbox','emailtobox'))  ){
@@ -475,17 +475,17 @@ function cforms($args = '',$no = '') {
 				$chkboxClicked = explode('|set:', stripslashes($obj[0]) );
 				$obj[0] = $chkboxClicked[0];
 			}
-			
+
 			###debug
 			db("\t\t found checkbox:, obj[0] = ".$obj[0]);
 
 			$options = explode('#', stripslashes($obj[0]) );
-			
+
             if (  in_array($field_type,array('subscribe','checkbox','ccbox'))  )
 				$field_name = ( $options[0]=='' ) ? $options[1]:$options[0];
 			else
 				$field_name = $options[0];
-				
+
 			###debug
 			db("\t\t left from '#' (=field_name) = ".$options[0].", right from '#': ".$options[1] . "  -> field_name= $field_name");
 
@@ -547,23 +547,23 @@ function cforms($args = '',$no = '') {
 				$idPartB = strrpos($field_name,']',$idPartA);
 
 				if( $isFieldArray ){
-				
+
 					$input_id = $input_name = cf_sanitize_ids( substr($field_name,$idPartA+4,($idPartB-$idPartA)-4) );
-					
+
 					if( !$inpFieldArr[$input_id] || $inpFieldArr[$input_id]=='' ){
 						$inpFieldArr[$input_id]=1;
-					} 
-					
+					}
+
 					$input_id	.= $inpFieldArr[$input_id]++;
 					$input_name .= '[]';
-				
+
 				} else
 					$input_id = $input_name = cf_sanitize_ids( substr($field_name,$idPartA+4,($idPartB-$idPartA)-4) );
 
 				$field_name = substr_replace($field_name,'',$idPartA,($idPartB-$idPartA)+1);
 				###debug
 				db("\t \t parsing custom ID/NAME...new field_name = $field_name, ID=$input_id");
-				
+
 			} else
 				$input_id = $input_name = cf_sanitize_ids(stripslashes($field_name));
 
@@ -752,7 +752,7 @@ function cforms($args = '',$no = '') {
 			case "email":
 				$cookieset = ($cookieset=='')?'comment_author_email_'.COOKIEHASH:$cookieset;
 				$field_value = ( $_COOKIE[$cookieset]<>'' ) ? $_COOKIE[$cookieset] : $field_value;
-			
+
 			case "datepicker":
 			case "yourname":
 			case "youremail":
@@ -795,7 +795,7 @@ function cforms($args = '',$no = '') {
 					db('......html5 attributes: '.$h5);
 				}else
 					$type = ($field_type=='pwfield')?'password':'text';
-					
+
 				$field_class = ($field_type=='datepicker')?$field_class.' cf_date':$field_class;
 
 			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
@@ -852,7 +852,7 @@ function cforms($args = '',$no = '') {
 	   		case "ccbox":
 			case "checkbox":
 				if ( !$all_valid || ($all_valid && $cformsSettings['form'.$no]['cforms'.$no.'_dontclear']) || ($isMPform && is_array($_SESSION['cforms']['cf_form'.$no])) ) //exclude MP! if first time on the form = array = null
-					$preChecked = ( $field_value && $field_value<>'' )? ' checked="checked"':'';  // for MPs 
+					$preChecked = ( $field_value && $field_value<>'' )? ' checked="checked"':'';  // for MPs
 				else
 					$preChecked = ( strpos($chkboxClicked[1],'true') !== false ) ? ' checked="checked"':'';  // $all_valid = user choice prevails
 
@@ -874,7 +874,7 @@ function cforms($args = '',$no = '') {
 				### if | val provided, then use "X"
 				if( $val=='' )
 					$val = ($opt[1]<>'')?' value="'.$opt[1].'"':'';
-					
+
 				$field = $nttt . $before . '<input' . $readonly.$disabled . ' type="checkbox" name="'.$input_name.'" id="'.$input_id.'" class="cf-box-' . $ba . $field_class . '"'.$val.$fieldTitle.$preChecked.'/>' . $after;
 
 				break;
@@ -1118,7 +1118,8 @@ function cforms($args = '',$no = '') {
 		$back = '<input type="submit" name="backbutton'.$no.'" id="backbutton'.$no.'" class="backbutton" value="' . $cformsSettings['form'.$no]['cforms'.$no.'_mp']['mp_backtext'] . '">';
 
 
-	$content .= $ntt . '<p class="cf-sb">'.$reset.$back.'<input type="submit" name="sendbutton'.$no.'" id="sendbutton'.$no.'" class="sendbutton" value="' . stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_submit_text'])) . '"'.$ajaxenabled.'/></p></form><p class="linklove" id="ll'. $no .'"><a href="http://www.deliciousdays.com/cforms-plugin"><em>cforms</em> contact form by delicious:days</a></p>';
+	// $content .= $ntt . '<p class="cf-sb">'.$reset.$back.'<input type="submit" name="sendbutton'.$no.'" id="sendbutton'.$no.'" class="sendbutton" value="' . stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_submit_text'])) . '"'.$ajaxenabled.'/></p></form><p class="linklove" id="ll'. $no .'"><a href="http://www.deliciousdays.com/cforms-plugin"><em>cforms</em> contact form by delicious:days</a></p>';
+	$content .= $ntt . '<p class="cf-sb">'.$reset.$back.'<input type="submit" name="sendbutton'.$no.'" id="sendbutton'.$no.'" class="sendbutton" value="' . stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_submit_text'])) . '"'.$ajaxenabled.'/></p></form>';
 
 	### either show message above or below
 	$usermessage_text	= check_default_vars($usermessage_text,$no);
@@ -1156,7 +1157,7 @@ function cforms_script() {
 		if( $cformsSettings['global']['cforms_datepicker']=='1' ){
 			$nav = $cformsSettings['global']['cforms_dp_nav'];
 			$dformat = str_replace(array('M','EE','E'),array('m','dddd','ddd'),stripslashes($cformsSettings['global']['cforms_dp_date']));
-	
+
 			echo '<script type="text/javascript">'."\n".
 				 // "\t".'var cforms = jQuery.noConflict(false);'."\n".
 				"\t".'var cfCAL={};'."\n".
@@ -1172,18 +1173,18 @@ function cforms_script() {
 				"\t".'cfCAL.TEXT_PREV_MONTH="'.stripslashes($nav[1]).'";'."\n".
 				"\t".'cfCAL.TEXT_NEXT_MONTH="'.stripslashes($nav[3]).'";'."\n".
 				"\t".'cfCAL.TEXT_CLOSE="'.stripslashes($nav[4]).'";'."\n".
-				"\t".'cfCAL.TEXT_CHOOSE_DATE="'.stripslashes($nav[5]).'";'."\n". 
-				"\t".'cfCAL.changeYear='. ($nav[6]==1? 'true':'false') .';'."\n". 
+				"\t".'cfCAL.TEXT_CHOOSE_DATE="'.stripslashes($nav[5]).'";'."\n".
+				"\t".'cfCAL.changeYear='. ($nav[6]==1? 'true':'false') .';'."\n".
 				"\t".'cfCAL.ROOT="'.$cformsSettings['global']['cforms_root'].'";' ."\n\n".
-				 
+
 				 "\t".'jQuery(function() { '."\n".
 				 "\t\t".'if( 1||jQuery.datepicker ){'."\n".
-				 
+
 					"\t\t\t".'jQuery(".cf_date").datepicker({'."\n".
 						"\t\t\t\t".'"buttonImage": cfCAL.ROOT+"/js/calendar.gif", changeYear: cfCAL.changeYear, buttonImageOnly: true, buttonText: cfCAL.TEXT_CHOOSE_DATE, showOn: "both",'."\n".
 						"\t\t\t\t".'"dateFormat": cfCAL.dateFormat, "dayNamesMin": cfCAL.dayNames, "dayNamesShort": cfCAL.dayNames, "monthNames": cfCAL.monthNames, firstDay:cfCAL.firstDayOfWeek,'."\n".
 						"\t\t\t\t".'"nextText": cfCAL.TEXT_NEXT_MONTH, "prevText": cfCAL.TEXT_PREV_MONTH, "closeText": cfCAL.TEXT_CLOSE });'."\n".
-			
+
 				 "\t\t".'}'."\n".
 				 "\t".'});'."\n".
 				 '</script>'."\n";
@@ -1216,7 +1217,7 @@ function cforms_style() {
 			wp_enqueue_script('jquery-ui-datepicker',false,false,false,false);
 		}
 		echo '<script type="text/javascript" src="' . $cforms_root. '/js/cforms.js"></script>'."\n";
-		
+
 	}
 }
 
@@ -1234,7 +1235,7 @@ function cforms_insert( $content ) {
 
 	$last=0;
 	if ( ($a=strpos($content,'<!--cforms'))!==false ) {  ### only if form tag is present!
-		
+
 		### get rid of WP's auto p...
 		//remove_filter('the_content',  'wpautop');
 
@@ -1484,7 +1485,7 @@ function widget_cforms_init() {
 				$options = array();
 				if( is_array($cformsSettings['global']['widgets']) )
 					$options = $cformsSettings['global']['widgets'];
-	            
+
 	            $prefix = 'cforms';
 
 	            if(empty($options)) $options = array();
@@ -1745,23 +1746,23 @@ if ( isset($_GET['page']) ) {
 	if( strpos($plugin_page, 'cforms-options.php') )
 		add_action('admin_bar_menu', 'add_items_options',999);
 	else if( strpos($plugin_page, 'cforms-global-settings.php') )
-		add_action('admin_bar_menu', 'add_items_global',999);	
+		add_action('admin_bar_menu', 'add_items_global',999);
 }
 
 function add_items_global( $admin_bar ){
-	
+
 	global $wpdb;
 
 	addAdminBar_root($admin_bar, 'cforms-bar', 'cforms Admin');
-	
+
 	addAdminBar_item($admin_bar, 'cforms-showinfo', __('Produce debug output', 'cforms'), __('Outputs -for debug purposes- all cforms settings', 'cforms'), 'jQuery("#cfbar-showinfo").trigger("click"); return false;');
 	addAdminBar_item($admin_bar, 'cforms-dellAllButton', __('Uninstalling / removing cforms', 'cforms'), __('Be careful here...', 'cforms'), 'jQuery("#cfbar-deleteall").trigger("click"); return false;');
 
-	if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions ) 
+	if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions )
 		addAdminBar_item($admin_bar, 'cforms-deletetables', __('Delete cforms tracking tables', 'cforms'), __('Be careful here...', 'cforms'), 'if ( confirm("'.__('Do you really want to erase all collected data?', 'cforms').'") ) jQuery("#deletetables").trigger("click"); return false;');
 
 	addAdminBar_item($admin_bar, 'cforms-backup', __('Backup / restore all settings', 'cforms'), __('Better safe than sorry ;)', 'cforms'), 'jQuery("#backup").trigger("click"); return false;');
-	
+
 	addAdminBar_item($admin_bar, 'cforms-SubmitOptions', __('Save & update form settings', 'cforms'), '', 'document.mainform.action="#"+getFieldset(focusedFormControl); jQuery("#cfbar-SubmitOptions").trigger("click"); return false;', 'root-default');
 
 }
@@ -1771,7 +1772,7 @@ function add_items_options( $admin_bar ){
 	$cfo = get_option('cforms_settings');
 
 	addAdminBar_root($admin_bar,'cforms-bar', 'cforms Admin');
-	
+
 	addAdminBar_item($admin_bar,'cforms-addbutton', __('Add new form', 'cforms'), __('Adds a new form with default values', 'cforms'), 'jQuery("#cfbar-addbutton").trigger("click"); return false;');
 	addAdminBar_item($admin_bar,'cforms-dupbutton', __('Duplicate current form', 'cforms'), __('Clones the current form', 'cforms'), 'jQuery("#cfbar-dupbutton").trigger("click"); return false;');
 	if ( (int)$cfo['global']['cforms_formcount'] > 1)
