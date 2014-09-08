@@ -261,8 +261,6 @@ function list_pings( $comment, $args, $depth ) {
 <?php } // end list_pings
 ?>
 
-
-<!-- product single attributes -->
 <?php
 
 	function convertToPound($pound){
@@ -298,7 +296,7 @@ function list_pings( $comment, $args, $depth ) {
 	}
 
 	function font_enqueue() {
-	            wp_register_style('raleway', 'http://fonts.googleapis.com/css?family=Raleway:500');
+	            wp_register_style('raleway', 'http://fonts.googleapis.com/css?family=Raleway:400,600');
 	            wp_register_style('baskerville', 'http://fonts.googleapis.com/css?family=Libre+Baskerville');
 	            wp_register_style('crimson', 'http://fonts.googleapis.com/css?family=Crimson+Text');
 	            wp_enqueue_style( 'raleway');
