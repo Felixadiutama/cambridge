@@ -259,9 +259,7 @@ function list_pings( $comment, $args, $depth ) {
 		</span>
 	</li>
 <?php } // end list_pings
-?>
 
-<?php
 
 	function convertToPound($pound){
 		$pound = (int)$pound;
