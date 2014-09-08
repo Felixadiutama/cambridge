@@ -260,7 +260,6 @@ function list_pings( $comment, $args, $depth ) {
 	</li>
 <?php } // end list_pings
 
-
 	function convertToPound($pound){
 		$pound = (int)$pound;
 		return ceil($pound * 2.20462);
@@ -294,8 +293,8 @@ function list_pings( $comment, $args, $depth ) {
 	}
 
 	function font_enqueue() {
-	            wp_register_style('raleway', 'http://fonts.googleapis.com/css?family=Raleway:400,600');
-	            wp_register_style('baskerville', 'http://fonts.googleapis.com/css?family=Libre+Baskerville');
+	            wp_register_style('raleway', 'http://fonts.googleapis.com/css?family=Raleway:400,500,600,700');
+	            wp_register_style('baskerville', 'http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic');
 	            wp_register_style('crimson', 'http://fonts.googleapis.com/css?family=Crimson+Text');
 	            wp_enqueue_style( 'raleway');
 	            wp_enqueue_style( 'baskerville');

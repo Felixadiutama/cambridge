@@ -6,10 +6,10 @@
 
 /*homepage*/
 .homepage-wrapper{
-	background: #292627;
+	background: #3b3931;
 	color: #867f7c;
 	text-align: center;
-	padding: 30px;
+	padding: 20px 0px;
 }
 
 .homepageMenuItems{
@@ -44,32 +44,47 @@
 	}
 }
 
+.content-wrapper{
+	padding: 35px;
+	color: #b9ab88;
+	.content-homepage-title{
+		 font-size : 21px;
+		 text-transform: uppercase;
+	}
+}
+
 /*product taxonomy page*/
 
 .products-collection {
     position: relative;
+    margin: 0 auto;
+    width: 270px;
+    height: 275px;
     margin-bottom: 20px;
-    width: 293px;
-    height: 293px;
 }
-.products-name {
-	position: absolute;
-	top: 0;
-	margin: 0;
-	height: 293px;
-	width: 293px;
-	text-align: center;
-	display: none; /* comment this out for CSS hover */
-	background-color: #fff;
-	opacity:0.6;
-	.text{
-		position: absolute;
-        color: #000;
-        top: 47%;
-        width: 100%;
-        text-align: center;
-        float: left;
+
+.archive-title {
+	text-transform: uppercase;
+	font-size: 18px;
+	letter-spacing: 0.4em;
+}
+
+.taxonomy-description{
+	p:first-child{
+		.baskervilleItalic;
+		text-transform: uppercase;
 	}
+}
+
+.archive-header-wrapper {
+	display: table-cell;
+	vertical-align: middle;
+	height: 450px;
+	text-align: center;
+}
+
+.archive-header-child{
+	vertical-align: middle;
 }
 
 #main-taxonomy{
@@ -77,10 +92,58 @@
 }
 
 .taxo-header{
-	background: #3b3931;
+	background:url(/wp-content/themes/cambridge_desktop/library/images/background-taxo.png) repeat-x;
 	color: #fff;
 }
 
+.border-brown{
+	border: #a7a193 30px solid;
+}
+
+#collections-menu{
+	margin: 30px 0px 20px 30px;
+	text-transform: uppercase;
+	.baskervilleItalic;
+	color: #d9cdb0;
+}
+
+#collections-menu a{
+	color: #d9cdb0;
+}
+
+#collections-menu a:hover{
+	color: #000;
+}
+
+#collections-menu a.hoverActive{
+	color: #000;
+	text-decoration: underline;
+}
+
+.list-inline > li {
+	display: inline-block;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.products-collection{
+	border: 2px solid #d9d7d4;
+}
+
+.products-name{
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.page-content-header{
+	font-size: 21px;
+	padding: 30px 0px;
+	text-transform: uppercase;
+}
+
+.page-content-info{
+	font-size: 16px;
+}
 
 /*template pages*/
 
@@ -93,8 +156,8 @@
 }
 
 .page-content-title{
-	background: #ecece9;
-	padding: 10px;
+	background: #a7a193;
+	padding: 15px;
 }
 
 .borderline{
@@ -178,6 +241,113 @@
 table.spec tr td {
 	width: 33%;
 }
+
+/*contact us*/
+
+.copyright{
+	padding: 15px 0px;
+	color: #000000
+}
+
+/*contact*/
+
+.contact-title{
+	text-transform: uppercase;
+	margin-top: 30px;
+	letter-spacing: 0.02em;
+}
+
+address span.company {
+	font-size: 22px;
+	line-height: 3.3em;
+}
+
+.contact-us-content{
+	font-size: 17px;
+}
+
+.cform{
+		text-transform: uppercase;
+	ol{
+
+
+		padding: 0px;
+		margin-top: 20px;
+		margin-right: 30px;
+		li{
+			list-style-type: none;
+			padding-bottom: 10px;
+			label{
+				font-size: 14px;
+				font-weight: 400;
+				width: 100%;
+				.ralewayNormal;
+			}
+			input, textarea {
+				padding-left: 5px;
+				font-size: 19px;
+				color: #000;
+				border: none;
+				border-top: #e9e8e9 3px solid;
+				background: #f6f6f6;
+			}
+			input{
+				height: 29px;
+				background: #f6f6f6;
+				width: 100%;
+			}
+			input.cf_error{
+				//background: url(/wp-content/themes/brew-master/library/images/input-required.png) no-repeat right ;
+			}
+
+			textarea.cf_error{
+				//background: url(/wp-content/themes/brew-master/library/images/textarea-required.png) no-repeat right;
+			}
+
+			textarea{
+				height: 127px;
+				width: 100%;
+			}
+		}
+	}
+	fieldset{
+		display: none;
+	}
+
+	.sendbutton{
+		color: #fff;
+		text-transform: uppercase;
+		border: none;
+		font-size: 17px;
+		margin-bottom: 25px;
+		padding: 10px 20px;
+		float: left;
+		border-top: #e3dfd8 2px solid;
+		background: #c2bbac;
+	}
+}
+
+.cf_info{
+	margin-bottom: 30px;
+	font-size: 19px;
+}
+
+.linklove{
+	display: none;
+}
+
+#usermessageb{
+	ol{
+		li{
+			a{
+				font-size: 19px;
+				text-decoration: none;
+				color: red;
+			}
+		}
+	}
+}
+
 
 /*menu sidebar*/
 

@@ -1,10 +1,11 @@
 <?php get_header(); ?>
-<?php get_sidebar('collections'); ?>
 
 <div class="container">
 
 	<div id="single-content" class="clearfix row">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php $terms = get_the_terms( $post->ID, 'collections' ); $term = array_pop($terms);?>
+<?php get_sidebar('collections'); var_dump($term);?>
 
 			<?php
 				$image1 = types_render_field( "image-1", array("output" => "raw") );
@@ -88,7 +89,7 @@
 				</div>
 				<!--/main slider carousel-->
 
-				<?php $terms = get_the_terms( $post->ID, 'collections' ); $term = array_pop($terms);?>
+
 
 				<!-- thumb navigation carousel -->
 				<div class="col-md-12 hidden-sm hidden-xs" id="slider-thumbs">

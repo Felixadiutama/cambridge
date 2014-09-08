@@ -19,7 +19,7 @@ Template Name: Template Contact Us
 								<div class="row">
 									<div class="col-md-12">
 										<div class="page-content-image">
-											<?php the_post_thumbnail( 'full'); ?>
+											<img src="/wp-content/themes/cambridge_desktop/library/images/ContactUs.jpg" alt="Contact Us">
 										</div>
 									</div>
 								</div>
@@ -27,15 +27,19 @@ Template Name: Template Contact Us
 
 								<div class="row">
 									<div class="col-md-12">
-										<div class="page-content-title raleway">
-											<?php the_title();?>
+										<div class="page-content-title">
+
 										</div>
 									</div>
 								</div>
 
 								<div class="row template-content">
-									<div class="col-md-6">
-										<div class="page-content-header raleway">
+									<div class="col-md-1"></div>
+									<div class="col-md-5">
+										<div class="page-content-header ralewayBold">
+											<?php the_title();?>
+										</div>
+										<div class="page-content-info ralewayMedium">
 											<?php the_content();?>
 										</div>
 									</div>

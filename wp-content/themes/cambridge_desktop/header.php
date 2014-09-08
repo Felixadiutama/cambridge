@@ -60,7 +60,7 @@
 
             </div>
 
-            <div class="navbar-collapse collapse navbar-responsive-collapse raleway">
+            <div class="navbar-collapse collapse navbar-responsive-collapse ralewaySemiBold navbarmenu">
               <?php bones_main_nav(); ?>
 
             </div>

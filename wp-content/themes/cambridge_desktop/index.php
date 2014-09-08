@@ -14,19 +14,17 @@
 					</div><!-- end .col-md-12 -->
 				</div><!-- end .row -->
 				<div class="homepage-wrapper">
-					<div class="row">
-						<div class="col-md-12">
 							<div class="borderline"></div>
-						</div>
-					</div>
+
+
 					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-6">
-							<div class="content-wrapper raleway">
-								<div class="content-homepage-title">
+							<div class="content-wrapper">
+								<div class="content-homepage-title baskervilleNormal">
 									<?php echo $homepage->post_title;?>
 								</div>
-								<div class="content-homepage">
+								<div class="content-homepage ralewayMedium">
 									<?php echo $homepage->post_content;?>
 								</div>
 
@@ -34,12 +32,11 @@
 						</div><!-- end .col-md-6-->
 						<div class="col-md-3"></div>
 					</div><!-- end .row -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="borderline"></div>
-						</div>
-					</div>
+
+
+				<div class="borderline"></div>
 				</div>
+
 			<div class="row">
 				<div class="col-md-12">
 					<?php
