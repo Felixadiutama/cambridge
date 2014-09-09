@@ -26,4 +26,10 @@ $image_sizes['big-thumbnail'] = array(
 	'crop' => false
 );
 
+$image_sizes['taxo-thumbnail'] = array(
+	'width' => 270,
+	'height' => 255,
+	'crop' => true
+);
+
 ?>

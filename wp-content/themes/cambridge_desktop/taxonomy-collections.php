@@ -9,7 +9,6 @@
 				<div class="row" style="background: url('<?php echo $images; ?>') no-repeat; min-height:450px;">
 						<div class="col-md-4 col-md-offset-8 taxo-header">
 
-
 							<div class="archive-header-wrapper">
 								<div class="archive-header-child">
 									<div class="archive-title baskervilleBold"><?php echo single_cat_title( '', false ); ?></div>
@@ -46,8 +45,14 @@
 
 
 											<div class="product-images">
-												<?php if ( has_post_thumbnail() ){ ?>
-													<?php the_post_thumbnail('medium'); ?>
+												<?php if ( has_post_thumbnail() ){
+													$thumbnailURL = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+													$productThumbnail = cc_image_resize(array(
+														'image_to_resize' => $thumbnailURL,
+														'image_size' => 'taxo-thumbnail'
+													));
+												?>
+												<img src="<?php echo $productThumbnail?>" class="img-responsive">
 												<?php }else{ ?>
 													<img src="/wp-content/themes/cambridge_desktop/library/images/300x300.gif" alt="products" class="img-responsive">
 												<?php } ?>

@@ -78,6 +78,21 @@ require_once( 'library/custom-post-type.php' ); // you can disable this if you l
 */
 // require_once( 'library/translation/translation.php' ); // this comes turned off by default
 
+/*
+5. library/cc-image_sizes.php
+	- Project specific functions
+	- knt_image_resize() resize and cache images
+	- example custom taxonomy (like tags)
+*/
+require_once( 'library/cc-image_sizes.php' ); // you can disable this if you like
+
+/*
+6. library/cc.php
+	- Project specific functions
+	- knt_image_resize() resize and cache images
+	- example custom taxonomy (like tags)
+*/
+
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
@@ -243,18 +258,46 @@ function list_pings( $comment, $args, $depth ) {
 		</span>
 	</li>
 <?php } // end list_pings
-?>
-
-
-<!-- product single attributes -->
-<?php
-	function convertToCentimeter($inch){
-		$inch = (int)$inch;
-		return ceil($inch* 2.54);
-	}
 
 	function convertToPound($pound){
 		$pound = (int)$pound;
 		return ceil($pound * 2.20462);
 	}
+
+	function convertToCentimeter($number) {
+	    // Get rid of whitespace on both ends of the string.
+	    $number = trim($number);
+
+	    // This results in the number of feet getting multiplied by 12 when eval'd
+	    // which converts them to inches.
+	    $number = str_replace("'", '*12', $number);
+
+	    // Convert other whitespace into a plus sign.
+	    $number = preg_replace('/\s+/', '+', $number);
+
+	    // Make sure they aren't making us eval() evil PHP code.
+	    if (preg_match('/[^0-9\/\.\+\*\-]/', $number)) {
+	        return false;
+	    } else {
+	        // Evaluate the expression we've built to get the number of inches.
+	        $inches = eval('return ($number);');
+
+	        // This is how you convert inches to meters according to Google calculator.
+	        $meters = $inches * 2.54;
+
+	        // Returns it in meters. You may then convert to centimeters by
+	        // multiplying by 100, kilometers by dividing by 1000, etc.
+	        return round( $meters, 1, PHP_ROUND_HALF_UP);
+	    }
+	}
+
+	function font_enqueue() {
+	            wp_register_style('raleway', 'http://fonts.googleapis.com/css?family=Raleway:400,500,600,700');
+	            wp_register_style('baskerville', 'http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic');
+	            wp_register_style('crimson', 'http://fonts.googleapis.com/css?family=Crimson+Text');
+	            wp_enqueue_style( 'raleway');
+	            wp_enqueue_style( 'baskerville');
+	            wp_enqueue_style( 'crimson');
+	        }
+	add_action('wp_print_styles', 'font_enqueue');
 ?>

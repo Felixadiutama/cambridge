@@ -4,8 +4,36 @@
 
 	<div id="single-content" class="clearfix row">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<?php $terms = get_the_terms( $post->ID, 'collections' ); $term = array_pop($terms);?>
-<?php get_sidebar('collections'); var_dump($term);?>
+<?php $singleTerms = get_the_terms( $post->ID, 'collections' ); $singleTerm = array_pop($singleTerms);?>
+
+<div class="row">
+	<div class="col-md-12">
+		<div id="collections-menu">
+			<ul class="list-inline">
+
+				<?php
+
+					$collections = get_terms(
+						'collections', array(
+						'hide_empty' => 0
+					) );
+					foreach ($collections as $collection) {
+						if ($singleTerm->slug == $collection->slug) {
+							$active = 'hoverActive';
+						}else{
+							$active = '';
+						}
+				?>
+					<li>
+						<a href="/<?php echo $collection->slug;?>" class="<?php echo $active;?>"><?php echo $collection->name;?></a> |
+					</li>
+
+				<?php }?>
+			</ul>
+
+		</div>
+	</div>
+</div>
 
 			<?php
 				$image1 = types_render_field( "image-1", array("output" => "raw") );
@@ -183,8 +211,6 @@
 
 				</div>
 
-
-
 				</div>
 
 				<div class="col-md-5">
@@ -201,7 +227,7 @@
 
 					<div class="row">
 						<div class="col-md-12">
-							<div class="single-collection-title"><?php echo $term->name;?> COLLECTION</div>
+							<div class="single-collection-title"><?php echo $singleTerm->name;?> COLLECTION</div>
 						</div><!-- .col-md-12-->
 					</div><!-- .row -->
 
@@ -353,11 +379,14 @@
 					<?php }?>
 
 					<?php
+
+
 						$materialColor = types_render_field( "material-color", array("output" => "raw") );
 						$materials = explode(" ",$materialColor);
 						if ($materialColor != '') {
-					?>
 
+
+					?>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="single-material-title">MATERIAL</div>
@@ -367,7 +396,7 @@
 						<div class="row">
 							<div class="col-md-12">
 							<ul class="list-inline">
-								<?php foreach ($materials as $material) {?>
+								<?php foreach ($materials as $material) { ?>
 								<li>
 									<?php
 										$image_material= cc_image_resize(array(
@@ -379,20 +408,24 @@
 											'image_to_resize' => $material,
 											'image_size' => 'big-thumbnail'
 										));
+
+								$imgID = get_attachment_id_from_src ($material);
+								$imgAlt = get_post_meta($imgID , '_wp_attachment_image_alt', true);
+
 									?>
 
 									<!-- Button trigger modal -->
-									<a href="#" data-toggle="modal" data-target="#myModal">
+									<a href="#" data-toggle="modal" data-target="#<?php echo $imgID ;?>">
 										<img src="<?php echo $image_material;?>" />
 									</a>
 
 									<!-- Modal -->
-									<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal fade" id="<?php echo $imgID ;?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $imgAlt;?>" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-													<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+													<h4 class="modal-title" id="myModalLabel"><?php echo $imgAlt;?></h4>
 												</div>
 												<div class="modal-body">
 													<img src="<?php echo $image_material_big;?>" />
@@ -437,7 +470,9 @@
 
 					<div class="row">
 						<div class="col-md-12">
-							<a href="/<?php echo $term->slug;?>">BACK TO THE COLLECTIONS</a>
+							<div class="back-to-collections">
+								<a href="/<?php echo $term->slug;?>">BACK TO THE COLLECTIONS</a>
+							</div>
 						</div><!-- .col-md-12-->
 					</div><!-- .row -->
 

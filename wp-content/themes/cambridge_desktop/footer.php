@@ -2,17 +2,20 @@
 </div><!-- end .wrap -->
 <footer id="footer" class="clearfix">
 
+	<div class="container ">
+		<div class="row ralewayMedium">
+				<div class="footerContainer">
+					<div class="col-md-4 disclaimer">
+						DISCLAIMER
+					</div>
+					<div class="col-md-4 col-md-offset-4 attribution">
+						Cambridge Casual | All Rights Reserved
+					</div>
+				</div>
+		</div> <!-- end .row -->
+	</div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 copyright">
-					DISCLAIMER
-				</div>
-				<div class="col-md-4 col-md-offset-4 attribution">
-					Cambridge Casual | All Rights Reserved
-				</div>
-			</div> <!-- end .row -->
-		</div>
+
 
 </footer> <!-- end footer -->
 

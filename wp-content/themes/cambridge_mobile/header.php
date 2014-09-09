@@ -55,11 +55,11 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="homepage"><?php bloginfo('name'); ?></a>
+              <a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="homepage"><img src="/wp-content/themes/cambridge_mobile/library/images/cc-logo.png" class="navbar-logo"></a>
 
             </div>
 
-            <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <div class="navbar-collapse collapse navbar-responsive-collapse ralewaySemiBold navbarmenu">
               <?php bones_main_nav(); ?>
 
             </div>
@@ -69,3 +69,4 @@
       </nav>
 
 		</header> <?php // end header ?>
+

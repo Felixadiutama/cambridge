@@ -77,16 +77,4 @@
 
     </div> <?php // end ./container ?>
 
-<script>
-$(document).ready( function() {
-
-    $('a .products-collection').hover( function() {
-        $(this).find('.products-name').fadeIn(300);
-    }, function() {
-        $(this).find('.products-name').fadeOut(100);
-    });
-
-});
-</script>
-
 <?php get_footer(); ?>

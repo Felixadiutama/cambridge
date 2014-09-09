@@ -1,8 +1,6 @@
 //
 // Mixins
 // --------------------------------------------------
-
-
 // Utilities
 // -------------------------
 
@@ -120,6 +118,7 @@
 //   supported browsers that have box shadow capabilities now support the
 //   standard `box-shadow` property.
 .box-shadow(@shadow) {
+     -moz-box-shadow: @shadow; // Firefox 3.5 & 3.6
   -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
           box-shadow: @shadow;
 }

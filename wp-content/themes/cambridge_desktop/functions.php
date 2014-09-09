@@ -301,4 +301,12 @@ function list_pings( $comment, $args, $depth ) {
 	            wp_enqueue_style( 'crimson');
 	        }
 	add_action('wp_print_styles', 'font_enqueue');
+
+
+	function get_attachment_id_from_src ($image_src) {
+		global $wpdb;
+		$query = "SELECT ID FROM {$wpdb->posts} WHERE guid='$image_src'";
+		$id = $wpdb->get_var($query);
+		return $id;
+	}
 ?>

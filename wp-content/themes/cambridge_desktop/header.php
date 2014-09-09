@@ -42,6 +42,11 @@
 
 	<body <?php body_class(); ?>>
 
+	<?php
+
+	$customs = get_post_meta(207);
+
+	?>
 <div id="wrap">
     <header class="header">
 
@@ -63,10 +68,19 @@
             <div class="navbar-collapse collapse navbar-responsive-collapse ralewaySemiBold navbarmenu">
               <?php bones_main_nav(); ?>
 
+			<div class="catalog-download-button">
+				<div class="download-button">
+				<div class="catalog-download-borderline"></div>
+					<a href="<?php echo $customs['wpcf-pdf-uploader'][0]?>">Download Catalog</a>
+				</div>
+			</div>
+
             </div>
           </div>
         </div>
 
       </nav>
 
-		</header> <?php // end header ?>
+
+
+	</header> <?php // end header ?>
