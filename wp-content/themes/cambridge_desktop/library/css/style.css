@@ -3276,6 +3276,9 @@ table.spec tr td {
 .back-to-collections {
   padding: 20px 0px;
 }
+.modal-header .close {
+  float: right;
+}
 /*contact us*/
 .contact-title {
   text-transform: uppercase;

@@ -358,12 +358,41 @@
 							<?php foreach ($colors as $color) {?>
 							<li>
 								<?php
-									$image_cushion= cc_image_resize(array(
+									$image_material= cc_image_resize(array(
 										'image_to_resize' => $color,
 										'image_size' => 'small-thumbnail'
 									));
+
+									$image_material_big= cc_image_resize(array(
+										'image_to_resize' => $color,
+										'image_size' => 'big-thumbnail'
+									));
+
+							$imgIDc = get_attachment_id_from_src ($color);
+							$imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
+
 								?>
-								<img src="<?php echo $image_cushion;?>" />
+
+								<!-- Button trigger modal -->
+								<a href="#" data-toggle="modal" data-target="#<?php echo $imgIDc ;?>">
+									<img src="<?php echo $image_material;?>" />
+								</a>
+
+								<!-- Modal -->
+								<div class="modal fade" id="<?php echo $imgIDc ;?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $imgAltc;?>" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+												<h4 class="modal-title" id="myModalLabel"><?php echo $imgAltc;?></h4>
+											</div>
+											<div class="modal-body">
+												<img src="<?php echo $image_material_big;?>" />
+											</div>
+										</div>
+									</div>
+								</div>
+
 							</li>
 							<?php }?>
 						</ul>
