@@ -1,10 +1,36 @@
 <?php get_header(); ?>
-<?php get_sidebar('collections'); ?>
+
+					<?php
+						$images = apply_filters( 'taxonomy-images-queried-term-image-url', '', array(
+						    'image_size' => 'full'
+						    ) );
+					?>
+
+					<img src="<?php echo $images; ?>" class="img-responsive">
+
+
+							<div class="archive-header-wrapper">
+								<div class="archive-header-child">
+									<div class="archive-title baskervilleBold"><?php echo single_cat_title( '', false ); ?></div>
+										<?php
+											$term_description = term_description();
+											if ( ! empty( $term_description ) ) {
+										?>
+										<div class="taxonomy-description baskervilleNormal">
+											<?php echo $term_description;?>
+										</div>
+
+										<?php } ?>
+								</div>
+							</div>
+
+
     <div class="container">
+			<div class="row border-brown"></div>
 
 			<div id="content" class="clearfix row">
 
-				<div id="main" class="col-md-12 clearfix" role="main">
+				<div id="main-taxonomy" class="col-md-12 clearfix" role="main">
 
 							<?php
 								$k = 1;
@@ -12,22 +38,26 @@
 								if ($k == 1) {echo '<div class="row">';}
 							?>
 
-								<div class="col-md-4">
+								<div class="col-xs-6">
 									<a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>" id="<?php the_title_attribute(); ?>" >
 										<div class="products-collection" id="<?php the_title_attribute(); ?>">
 
-											<div class="products-name">
-												<div class="text">
-													<?php the_title(); ?>
-												</div>
-											</div>
 
 											<div class="product-images">
-												<?php if ( has_post_thumbnail() ){ ?>
-													<?php the_post_thumbnail('medium'); ?>
+												<?php if ( has_post_thumbnail() ){
+													$thumbnailURL = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+													$productThumbnail = cc_image_resize(array(
+														'image_to_resize' => $thumbnailURL,
+														'image_size' => 'taxo-thumbnail'
+													));
+												?>
+												<img src="<?php echo $productThumbnail?>" class="img-responsive">
 												<?php }else{ ?>
-													<img src="/wp-content/themes/cambridge_desktop/library/images/300x300.gif" alt="">
+													<img src="/wp-content/themes/cambridge_desktop/library/images/300x300.gif" alt="products" class="img-responsive">
 												<?php } ?>
+											</div>
+											<div class="products-name ralewayMedium ">
+												<?php the_title(); ?>
 											</div>
 
 										</div>
@@ -35,7 +65,7 @@
 								</div>
 
 							<?php
-								if ($i == 3 || $j == $i) {
+								if ($i == 2 || $j == $i) {
 									echo '</div>'; $k=1;
 								}else{
 									$i++; $k++;
@@ -76,5 +106,6 @@
 			</div> <?php // end #content ?>
 
     </div> <?php // end ./container ?>
+
 
 <?php get_footer(); ?>

@@ -8,6 +8,11 @@ body{
 }
 
 /*nav*/
+
+.header {
+	background: #9d978d;
+}
+
 .navbar {
 	position: relative;
 	min-height: 110px;
@@ -40,6 +45,50 @@ body{
 	color: #d9cdb0;
 }
 
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+	background-color: transparent;
+	color: #fff;
+}
+
+.navbar-nav>li>.dropdown-menu {
+	margin-top: 7px;
+	left: 10px;
+}
+
+.dropdown-menu {
+	position: absolute;
+	font-size: 12px;
+	background-color: #36332d;
+	border: 0px;
+	border-radius: 0px;
+	.ralewaySemiBold;
+}
+
+.dropdown-menu>li> {
+	a{
+		display: block;
+		padding: 3px 20px;
+		clear: both;
+		font-weight: normal;
+		color: #908979;
+		white-space: nowrap;
+	}
+	a:hover{
+		background-color: inherit;
+		color: #fff;
+	}
+
+	a:focus {
+		background-color: inherit;
+		color: #fff;
+	}
+}
+
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus{
+	background-color: inherit;
+	color: #fff
+}
+
 .navbar-inverse .navbar-nav > li {
 	> a {
 		color: #3b3931;
@@ -59,7 +108,7 @@ body{
 .catalog-download-button{
 	.baskervilleNormal;
 	position: absolute;
-	right: 540px;
+	right: 54px;
 	top: 0px;
 	height: 65px;
 	width: 70px;

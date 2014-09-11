@@ -309,4 +309,34 @@ function list_pings( $comment, $args, $depth ) {
 		$id = $wpdb->get_var($query);
 		return $id;
 	}
+
+
+	/* get the first level of navigation menu */
+	function getFirstLevelNav($wpMenuItems){
+
+		$secNavItems = array();
+
+		foreach ($wpMenuItems  as $key => $wpMenuItem) {
+			if ($wpMenuItem->menu_item_parent == 0) {
+				$secNavItems[] = $wpMenuItem;
+			}
+		}
+
+		return $secNavItems;
+	}
+
+	function getSecondLevelNav($wpMenuItems, $firstLevelNavItem) {
+
+		$secNavItems = array();
+
+		foreach ($wpMenuItems  as $key => $wpMenuItem) {
+			if ($wpMenuItem->menu_item_parent == $firstLevelNavItem->ID) {
+				$secNavItems[] = $wpMenuItem;
+			}
+		}
+
+		return $secNavItems;
+	}
 ?>
+
+

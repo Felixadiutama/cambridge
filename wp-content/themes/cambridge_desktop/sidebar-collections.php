@@ -7,7 +7,7 @@
 
 					$collections = get_terms(
 						'collections', array(
-						'hide_empty' => 0
+						'hide_empty' => 1
 					) );
 					foreach ($collections as $collection) {
 						if ($term == $collection->slug || $singleTerm->slug == $collection->slug) {

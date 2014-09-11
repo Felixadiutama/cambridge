@@ -49,10 +49,10 @@
 	?>
 <div id="wrap">
     <header class="header">
+          <div class="container">
 
       <nav role="navigation">
         <div class="navbar navbar-inverse navbar-default">
-          <div class="container">
             <!-- .navbar-toggle is used as the toggle for collapsed navbar content -->
             <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -68,19 +68,18 @@
             <div class="navbar-collapse collapse navbar-responsive-collapse ralewaySemiBold navbarmenu">
               <?php bones_main_nav(); ?>
 
-			<div class="catalog-download-button">
-				<div class="download-button">
-				<div class="catalog-download-borderline"></div>
-					<a href="<?php echo $customs['wpcf-pdf-uploader'][0]?>">Download Catalog</a>
+				<div class="catalog-download-button">
+					<div class="download-button">
+					<div class="catalog-download-borderline"></div>
+						<a href="<?php echo $customs['wpcf-pdf-uploader'][0]?>">Download Catalog</a>
+					</div>
 				</div>
-			</div>
 
             </div>
-          </div>
         </div>
 
       </nav>
 
-
+</div>
 
 	</header> <?php // end header ?>
