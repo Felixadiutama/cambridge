@@ -19,7 +19,12 @@ Template Name: Page Template
 								<div class="row">
 									<div class="col-md-12">
 										<div class="page-content-image">
-											<?php the_post_thumbnail( 'full'); ?>
+
+											<?php
+												$headerImageURL = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+												var_dump($headerImageURL);
+											?>
+											<img src="<?php echo $headerImageURL;?>" class="img-responsive">
 										</div>
 									</div>
 								</div>
@@ -34,19 +39,21 @@ Template Name: Page Template
 								</div>
 
 								<div class="row template-content">
-								<div class="col-md-1"></div>
-									<div class="col-md-3"></div>
-									<div class="col-md-7">
-
-										<div class="ralewayBold page-content-header">
-											<?php the_title();?>
-										</div>
-										<div class="page-content ralewayMedium">
-											<?php the_content();?>
-										</div>
-
-									</div>
 									<div class="col-md-1"></div>
+										<div class="col-md-3">
+
+										</div>
+										<div class="col-md-7">
+
+											<div class="ralewayBold page-content-header">
+												<?php the_title();?>
+											</div>
+											<div class="page-content ralewayMedium">
+												<?php the_content();?>
+											</div>
+
+										</div>
+										<div class="col-md-1"></div>
 								</div>
 
 							<?php endwhile; ?>

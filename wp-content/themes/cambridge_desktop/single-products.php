@@ -10,8 +10,13 @@
 				<div class="col-md-12">
 					<div id="collections-menu">
 						<ul class="list-inline">
+
 							<?php
-							$collecti=get_terms('collections',array('hide_empty'=>0));
+
+							$collections = get_terms(
+								'collections', array(
+									'hide_empty' => 1
+									) );
 							foreach ($collections as $collection) {
 								if ($singleTerm->slug == $collection->slug) {
 									$active = 'hoverActive';
@@ -22,23 +27,28 @@
 								<li>
 									<a href="/<?php echo $collection->slug;?>" class="<?php echo $active;?>"><?php echo $collection->name;?></a> |
 								</li>
-								<?php } ?>
+
+								<?php }?>
 							</ul>
+
 						</div>
 					</div>
 				</div>
-<?php
-$productSliderImages = array(
-	wp_get_attachment_url(get_post_thumbnail_id($post->ID)),
-	types_render_field("image-2", array("output"=>"raw")),
-	types_render_field("image-3", array("output"=>"raw")),
-	types_render_field("image-4", array("output"=>"raw")),
-	types_render_field("image-5", array("output"=>"raw"))
-);
-?>
+
+				<?php
+				$productSliderImages = array(
+					wp_get_attachment_url(get_post_thumbnail_id($post->ID)),
+					types_render_field("image-2", array("output"=>"raw")),
+					types_render_field("image-3", array("output"=>"raw")),
+					types_render_field("image-4", array("output"=>"raw")),
+					types_render_field("image-5", array("output"=>"raw"))
+					);
+					?>
 					<div class="row">
 						<div class="col-md-7">
+
 							<!-- main slider carousel -->
+
 							<div class="carousel slide article-slide" id="myCarousel">
 								<div class="carousel-inner cont-slider">
 									<?php
@@ -65,14 +75,18 @@ $productSliderImages = array(
 											?>
 											<li class="<?php if ($i===0){echo 'active';} ?>" data-slide-to="<?php echo $i; ?>" data-target="#myCarousel"><img src="<?php echo $image_path1; ?>" /></li>
 											<?php
+
 											$i++;
 										}
 									}
 									?>
 								</ul>
 							</div>
+
 						</div><!-- col-7 -->
+
 						<div class="col-md-5">
+
 							<div class="row">
 								<div class="col-md-12">
 									<h2 class="single-product-title"><?php the_title();?></h2>
@@ -83,6 +97,7 @@ $productSliderImages = array(
 									<div class="single-title-border"></div>
 								</div><!-- .col-md-12-->
 							</div><!-- .row -->
+
 							<div class="row">
 								<div class="col-md-12">
 									<div class="single-collection-title"><?php echo $singleTerm->name;?> COLLECTION</div>
@@ -94,71 +109,84 @@ $productSliderImages = array(
 									<div class="single-title-border"></div>
 								</div><!-- .col-md-12-->
 							</div><!-- .row -->
+
 							<?php if ($post->post_content != '') {?>
+
 							<div class="row">
 								<div class="col-md-12">
 									<div class="single-collection-content"><?php the_content();?> </div>
 								</div><!-- .col-md-12-->
 							</div><!-- .row -->
-							<div class="row">
-								<div class="col-md-12">
-									<div class="single-title-border"></div>
-								</div><!-- .col-md-12-->
-							</div><!-- .row -->
-							<?php }?>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="single-dimension-title">DIMENSION</div>
-								</div><!-- .col-md-12-->
-							</div><!-- .row -->
-<?php
-$width = types_render_field( "width", array());
-$height =  types_render_field( "height", array());
-$depth = types_render_field( "depth", array());
-$weight = types_render_field( "weight", array());
-$diameter = types_render_field( "diameter", array());
-?>
-							<div class="row">
-								<div class="col-md-12">
-									<table class="table table-hover borderless spec">
-										<?php if ($width !=''){?>
-										<tr>
-											<td>Width</td>
-											<td><?php echo $width; ?>"</td>
-											<td><?php echo convertToCentimeter($width)?> <small>cm</small></td>
-										</tr>
-										<?php }?>
-										<?php if ($height !=''){?>
-										<tr>
-											<td>Height</td>
-											<td><?php echo $height; ?>"</td>
-											<td><?php echo convertToCentimeter($height)?> <small>cm</small></td>
-										</tr>
-										<?php }?>
-										<?php if ($depth !=''){?>
-										<tr>
-											<td>Depth</td>
-											<td><?php echo $depth; ?>"</td>
-											<td><?php echo convertToCentimeter($depth)?> <small>cm</small></td>
-										</tr>
-										<?php }?>
-										<?php if ($diameter !=''){?>
-										<tr>
-											<td>Diameter</td>
-											<td><?php echo $diameter; ?>"</td>
-											<td><?php echo convertToCentimeter($diameter)?> <small>cm</small></td>
-										</tr>
-										<?php }?>
-									</table>
-								</div>
-							</div><!-- .row -->
+
 							<div class="row">
 								<div class="col-md-12">
 									<div class="single-title-border"></div>
 								</div><!-- .col-md-12-->
 							</div><!-- .row -->
 
-							<?php if ($weight !=''){ ?>
+							<?php }?>
+
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="single-dimension-title">DIMENSION</div>
+								</div><!-- .col-md-12-->
+							</div><!-- .row -->
+
+							<?php
+							$width = types_render_field( "width", array( ) );
+							$height =  types_render_field( "height", array( ) );
+							$depth = types_render_field( "depth", array( ) );
+							$weight = types_render_field( "weight", array( ) );
+							$diameter = types_render_field( "diameter", array( ) );
+							?>
+
+							<div class="row">
+								<div class="col-md-12">
+									<table class="table table-hover borderless spec">
+										<?php if ($width !=''){?>
+										<tr>
+											<td>Width</td>
+											<td><?php {echo $width;} ?>"</td>
+											<td><?php echo convertToCentimeter($width)?> <small>cm</small> </td>
+										</tr>
+										<?php }?>
+
+										<?php if ($height !=''){?>
+										<tr>
+											<td>Height</td>
+											<td><?php {echo $height;} ?>"</td>
+											<td><?php echo convertToCentimeter($height)?> <small>cm</small> </td>
+										</tr>
+										<?php }?>
+
+										<?php if ($depth !=''){?>
+										<tr>
+											<td>Depth</td>
+											<td><?php {echo $depth;} ?>"</td>
+											<td><?php echo convertToCentimeter($depth)?> <small>cm</small> </td>
+										</tr>
+										<?php }?>
+
+										<?php if ($diameter !=''){?>
+										<tr>
+											<td>Diameter</td>
+											<td><?php {echo $diameter;} ?>"</td>
+											<td><?php echo convertToCentimeter($diameter)?> <small>cm</small> </td>
+										</tr>
+										<?php }?>
+									</table>
+								</div>
+							</div><!-- .row -->
+
+
+							<div class="row">
+								<div class="col-md-12">
+									<div class="single-title-border"></div>
+								</div><!-- .col-md-12-->
+							</div><!-- .row -->
+
+							<?php if ($weight !=''){?>
 							<div class="row">
 								<div class="col-md-12">
 									<div class="single-dimension-title">WEIGHT CAPACITY</div>
@@ -184,11 +212,11 @@ $diameter = types_render_field( "diameter", array());
 								</div><!-- .col-md-12-->
 							</div><!-- .row -->
 
-<?php
-$cushionColor = types_render_field( "cushion-color", array("output" => "raw") );
-$colors = explode(" ",$cushionColor);
-if ($cushionColor != '') {
-?>
+							<?php
+							$cushionColor = types_render_field( "cushion-color", array("output" => "raw") );
+							$colors = explode(" ",$cushionColor);
+							if ($cushionColor != '') {
+								?>
 
 								<div class="row">
 									<div class="col-md-12">
@@ -196,17 +224,28 @@ if ($cushionColor != '') {
 									</div><!-- .col-md-12-->
 								</div><!-- .row -->
 
+
 								<div class="row">
 									<div class="col-md-12">
 										<ul class="list-inline">
-											<?php foreach ($colors as $color) { ?>
+											<?php foreach ($colors as $color) {?>
 											<li>
-<?php
-$image_material= cc_image_resize(array('image_to_resize'=>$color,'image_size'=>'small-thumbnail'));
-$image_material_big= cc_image_resize(array('image_to_resize'=>$color,'image_size'=>'big-thumbnail'));
-$imgIDc = get_attachment_id_from_src ($color);
-$imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
-?>
+												<?php
+												$image_material= cc_image_resize(array(
+													'image_to_resize' => $color,
+													'image_size' => 'small-thumbnail'
+													));
+
+												$image_material_big= cc_image_resize(array(
+													'image_to_resize' => $color,
+													'image_size' => 'big-thumbnail'
+													));
+
+												$imgIDc = get_attachment_id_from_src ($color);
+												$imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
+
+												?>
+
 												<!-- Button trigger modal -->
 												<a href="#" data-toggle="modal" data-target="#<?php echo $imgIDc ;?>">
 													<img src="<?php echo $image_material;?>" />
@@ -226,6 +265,7 @@ $imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
 														</div>
 													</div>
 												</div>
+
 											</li>
 											<?php }?>
 										</ul>
@@ -237,12 +277,18 @@ $imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
 										<div class="single-title-border"></div>
 									</div><!-- .col-md-12-->
 								</div><!-- .row -->
-<?php
-}
+
+								<?php }?>
+
+								<?php
+
+
 								$materialColor = types_render_field( "material-color", array("output" => "raw") );
 								$materials = explode(" ",$materialColor);
 								if ($materialColor != '') {
-?>
+
+
+									?>
 									<div class="row">
 										<div class="col-md-12">
 											<div class="single-material-title">MATERIAL</div>
@@ -254,7 +300,7 @@ $imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
 											<ul class="list-inline">
 												<?php foreach ($materials as $material) { ?>
 												<li>
-<?php
+													<?php
 													$image_material= cc_image_resize(array(
 														'image_to_resize' => $material,
 														'image_size' => 'small-thumbnail'
@@ -267,7 +313,8 @@ $imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
 
 													$imgID = get_attachment_id_from_src ($material);
 													$imgAlt = get_post_meta($imgID , '_wp_attachment_image_alt', true);
-?>
+
+													?>
 
 													<!-- Button trigger modal -->
 													<a href="#" data-toggle="modal" data-target="#<?php echo $imgID ;?>">
@@ -322,6 +369,7 @@ $imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
 										</div><!-- .col-md-12-->
 									</div><!-- .row -->
 
+
 									<div class="row">
 										<div class="col-md-12">
 											<div class="back-to-collections">
@@ -330,10 +378,14 @@ $imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
 										</div><!-- .col-md-12-->
 									</div><!-- .row -->
 
+
 								</div><!-- .col-md-5 -->
 							</div><!-- .row -->
+
 						<?php endwhile; ?>
+
 					<?php else : ?>
+
 						<article id="post-not-found" class="hentry clearfix">
 							<header class="article-header">
 								<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
@@ -345,9 +397,47 @@ $imgAltc = get_post_meta($imgIDc , '_wp_attachment_image_alt', true);
 								<p><?php _e( 'This is the error message in the single.php template.', 'bonestheme' ); ?></p>
 							</footer>
 						</article>
+
 					<?php endif; ?>
+
+
 				</div> <?php // end #content ?>
+
 			</div> <?php // end ./container ?>
-<script type='text/javascript'>$(document).ready(function(){$('#myCarousel').carousel({pause:true,interval:false});});</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54081f8a4a05f215"></script>
-<?php get_footer(); ?>
+
+			<script type='text/javascript'>
+
+				$(document).ready(function() {
+
+					$('#myCarousel').carousel({
+						pause: true,
+						interval: false
+					});
+
+	// handles the carousel thumbnails
+	// $('[id^=carousel-selector-]').click( function(){
+	// 	var id_selector = $(this).attr("id");
+	// 	var id = id_selector.substr(id_selector.length -1);
+	// 	id = parseInt(id);
+	// 	$('#myCarousel').carousel(id);
+	// 	$('[id^=carousel-selector-]').removeClass('selected');
+	// 	$(this).addClass('selected');
+	// });
+
+	// when the carousel slides, auto update
+	// $('#myCarousel').on('slid', function (e) {
+	// 	var id = $('.item.active').data('slide-number');
+	// 	id = parseInt(id);
+	// 	$('[id^=carousel-selector-]').removeClass('selected');
+	// 	$('[id^=carousel-selector-'+id+']').addClass('selected');
+	// });
+
+			});
+
+
+
+			</script>
+
+			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54081f8a4a05f215"></script>
+
+			<?php get_footer(); ?>

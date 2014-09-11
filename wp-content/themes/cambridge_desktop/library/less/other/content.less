@@ -53,13 +53,44 @@
 	}
 }
 
+.modal-header{
+	border: 0px;
+}
+
+.modal-header .close {
+	margin-top: -10px;
+}
+
+.modal-body img{
+	display: block;
+	margin: 0 auto;
+}
+
+.modal-content {
+	position: relative;
+	background-color: #fff;
+	border: 0px;
+	border-radius: 0px;
+	box-shadow: 0px;
+	outline: none;
+}
+
+.close {
+	font-size: 40px;
+	font-weight: normal;
+	line-height: 1;
+	color: #000;
+	opacity: 1;
+}
+
+
 /*product taxonomy page*/
 
 .products-collection {
     position: relative;
     margin: 0 auto;
     width: 270px;
-    height: 275px;
+    height: 270px;
     margin-bottom: 20px;
 }
 
@@ -130,9 +161,12 @@
 	border: 2px solid #d9d7d4;
 }
 
-.products-name{
+.products-name {
 	text-align: center;
 	text-transform: uppercase;
+	position: absolute;
+	bottom: 5px;
+	width: 100%;
 }
 
 .page-content-header{
@@ -148,6 +182,52 @@
 .pagination {
 	float: right;
 }
+
+.modal {
+	display: none;
+	overflow: auto;
+	overflow-y: scroll;
+	position: fixed;
+	top: 150px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1050;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;
+	.modal-dialog{
+		width: 500px;
+	}
+}
+
+.pagination{
+	margin-right: 13px;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span ,.pagination>li:last-child>a, .pagination>li:last-child>span
+{
+	margin-left: 0;
+	border-radius: 0px;
+}
+
+
+.pagination>li>a, .pagination>li>span {
+	position: relative;
+	float: left;
+	padding: 6px 12px;
+	line-height: 1.428571429;
+	text-decoration: none;
+	color: #fff;
+	background-color: #c8bfb1;
+	border: 1px solid #fff;
+}
+
+.pagination>li>a:hover, .pagination>li>span:hover {
+	color: #fff;
+	background-color: #d9d7d4;
+	border: 1px solid #fff;
+}
+
 
 /*template pages*/
 
@@ -203,35 +283,38 @@
 	text-transform: uppercase;
 }
 
-#myCarousel .carousel-indicators {
-    bottom: 0;
-    left: 10px;
-    margin-left: 5px;
-    width: 100%;
+.carousel-indicators {
+	position: relative;
+	bottom: 0px;
+	left: 0;
+	z-index: 15;
+	width: 100%;
+	margin-left: 30px;
+	padding-left: 0;
+	list-style: none;
+	text-align: center;
 }
 
 #myCarousel .carousel-indicators li {
     border: medium none;
     border-radius: 0;
     float: left;
-    height: 44px;
+    height: 60px;
     margin-bottom: 5px;
     margin-left: 0;
-    margin-right: 5px !important;
-    margin-top: 0;
-    width: 120px;
+    margin-right: 20px !important;
+    margin-top: 20px;
+    width: 60px;
 }
 
 #myCarousel .carousel-indicators img {
     border: 2px solid #FFFFFF;
     float: left;
-    height: 44px;
     left: 0;
-    width: 120px;
 }
 
 #myCarousel .carousel-indicators .active img {
-    border: 2px solid #39b3d7;
+    outline: 2px solid #908979;
 }
 
 .thumbnail-selector .active{
@@ -240,11 +323,6 @@
 
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
 	margin: 0 auto;
-}
-
-.selected img {
-	outline: 3px solid #908979;
-	outline-offset: -2px;
 }
 
 .cushionColorPicker{

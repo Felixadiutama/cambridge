@@ -1,0 +1,49 @@
+.ralewayNormal {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+.ralewayMedium {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+.ralewaySemiBold {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+.ralewayBold {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+.baskervilleNormal {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.01em;
+}
+.baskervilleItalic {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+.baskervilleBold {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.01em;
+}
+.crimson {
+  font-family: 'Crimson Text', serif;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 0.01em;
+  font-size: 18px;
+}

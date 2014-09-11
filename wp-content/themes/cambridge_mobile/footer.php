@@ -2,17 +2,19 @@
 </div><!-- end .wrap -->
 <footer id="footer" class="clearfix">
 
+	<div class="container ">
+		<div class="row ralewayMedium">
+				<div class="footerContainer">
+					<div class="col-xs-8 col-xs-offset-4 ">
+						<div class="attribution">
+							Cambridge Casual | All Rights Reserved
+						</div>
+					</div>
+				</div>
+		</div> <!-- end .row -->
+	</div>
 
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 copyright">
-					&copy; <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>.
-				</div>
-				<div class="col-md-4 col-md-offset-4 attribution">
-					Built by <a target="_blank" href="http://www.danvswild.com">Dan vs Wild</a>
-				</div>
-			</div> <!-- end .row -->
-		</div>
+
 
 </footer> <!-- end footer -->
 

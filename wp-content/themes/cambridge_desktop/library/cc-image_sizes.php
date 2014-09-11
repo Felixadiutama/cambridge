@@ -9,7 +9,7 @@ $image_sizes['thumb-slider'] = array(
 );
 
 $image_sizes['product-images'] = array(
-	'width' => 506,
+	'width' => 480,
 	'height' => 99999,
 	'crop' => false
 );
@@ -28,7 +28,7 @@ $image_sizes['big-thumbnail'] = array(
 
 $image_sizes['taxo-thumbnail'] = array(
 	'width' => 270,
-	'height' => 255,
+	'height' => 270,
 	'crop' => true
 );
 
