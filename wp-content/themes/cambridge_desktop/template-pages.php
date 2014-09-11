@@ -22,7 +22,6 @@ Template Name: Page Template
 
 											<?php
 												$headerImageURL = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
-												var_dump($headerImageURL);
 											?>
 											<img src="<?php echo $headerImageURL;?>" class="img-responsive">
 										</div>
