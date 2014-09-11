@@ -1,28 +1,28 @@
 <?php get_header(); ?>
 
-					<?php
-						$images = apply_filters( 'taxonomy-images-queried-term-image-url', '', array(
-						    'image_size' => 'full'
-						    ) );
-					?>
+	<?php
+		$images = apply_filters( 'taxonomy-images-queried-term-image-url', '', array(
+		    'image_size' => 'full'
+		    ) );
+	?>
 
-					<img src="<?php echo $images; ?>" class="img-responsive">
+		<img src="<?php echo $images; ?>" class="img-responsive"/>
 
 
-							<div class="archive-header-wrapper">
-								<div class="archive-header-child">
-									<div class="archive-title baskervilleBold"><?php echo single_cat_title( '', false ); ?></div>
-										<?php
-											$term_description = term_description();
-											if ( ! empty( $term_description ) ) {
-										?>
-										<div class="taxonomy-description baskervilleNormal">
-											<?php echo $term_description;?>
-										</div>
-
-										<?php } ?>
-								</div>
+				<div class="archive-header-wrapper">
+					<div class="archive-header-child">
+						<div class="archive-title baskervilleBold"><?php echo single_cat_title( '', false ); ?></div>
+							<?php
+								$term_description = term_description();
+								if ( ! empty( $term_description ) ) {
+							?>
+							<div class="taxonomy-description baskervilleNormal">
+								<?php echo $term_description;?>
 							</div>
+
+							<?php } ?>
+					</div>
+				</div>
 
 
     <div class="container">

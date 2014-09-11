@@ -9,7 +9,7 @@
 		<div class="carousel-inner">
 
 			<?php
-				$gallery = get_post_gallery( 215, false );
+				$gallery = get_post_gallery( 304, false );
 				$ids = explode( ",", $gallery['ids'] );
 
 					$i = 1;
@@ -17,9 +17,7 @@
 				   $link   = wp_get_attachment_url( $id );
 			?>
 
-			<div class="item <?php if ($i == 1) {
-				echo "active";}?>">
-				<img src="<?php echo $link;?>">
+			<div class="item <?php if ($i == 1) {echo "active";}?>" style="background: url('<?php echo $link;?>') no-repeat top center; overflow:hidden; width: 100%; min-height: 451px;">
 			</div>
 
 			<?php $i++;}?>
